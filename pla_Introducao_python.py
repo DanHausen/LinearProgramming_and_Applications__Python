@@ -1,4 +1,4 @@
-# Daniel Nordhausen de Faria
+# Dan Hausen
 
 """ 1
 Saulo Pescador, comprou um microcomputador para controlar o rendimento diário de seu trabalho. Toda vez que ele traz um peso de peixes maior que o estabelecido pelo regulamento de pesca do estado de São Paulo (50 quilos) deve pagar uma multa de R$ 6,00 por quilo excedente. Saulo precisa que você faça um programa que leia a variável peso (peso de peixes) e calcule o excesso. Gravar na variável excesso a quantidade de quilos além do limite e na variável multa o valor da multa que Saulo deverá pagar. Exiba os dados do programa com as mensagens adequadas.
