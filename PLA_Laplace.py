@@ -1,22 +1,13 @@
 # Dan Hausen
-
 def questao1():
     print('Questao 1... selecionada')  
 
     determinante = 0
-    subDeterminante = 0
     diagonalPrincipal = 1
     diagonalSecundaria = 1
-    cofator = 1
-
-    multD1 = 1
-    multD2 = 1
-    multD3 = 1
-    multE1 = 1
-    multE2 = 1
-    multE3 = 1
-    resultDiagPrincipal = 0
-    resultDiagSecundaria = 0
+    x = 0
+    row = 0
+    col = 0
 
     matriz = []
     subList = []
@@ -24,12 +15,11 @@ def questao1():
     linhas = int(input('Insira o numero de linhas... '))
     colunas = int(input('Insira o numero de colunas... '))
 
-    if(linhas != colunas or linhas <= 0 or colunas <= 0):   # ! Verificacao se é matriz quadrada
+    if(linhas != colunas or linhas <= 0 or colunas <= 0):   # ? Verificacao se é matriz quadrada
         print('Não é possivel calcular o determinanate, a matriz não é quadrada')
-    else:                                                   # ! Criação dos elementos da matriz
+    else:                                                   # ? Criação dos elementos da matriz
         if(linhas == 1):
             determinante = int(input('Insira o valor da matriz 1 x 1... '))
-            cofator = determinante
         else:
             print('Insira os valores da matriz %s x %s' % (linhas, colunas))
             for n in range(linhas):
@@ -54,52 +44,29 @@ def questao1():
                             diagonalSecundaria *= matriz[n][c]
                 determinante = diagonalPrincipal - diagonalSecundaria
 
-            # ! Continuar a partir daqui
+            elif(linhas >= 3):                
+                while x < linhas:
+                    if(matriz[0][x] != 0):
+                        matrix = []
+                        i_aux = 0
+                        j_aux = 0
+                        while row < linhas:
+                            while col < linhas:
+                                if(col != x):
+                                    matrix.append(matriz[row][col])
+                                    j_aux += 1
+                                col += 1
+                            i_aux += 1
+                            j_aux = 0
+                            row += 1       
+                        factor = (x % 2 == 0) if matriz[0][x] else -matriz[0][x]
+                        determinante = determinante + factor * (linhas - 1)
+                    x += 1
 
-            elif(linhas >= 3):
-                placeholder = linhas - 3
-                n += placeholder
-                c += placeholder
-                for n in range(linhas):
-                    for c in range(colunas):
-                        if(n == c):
-                            multD1 *= matriz[n][c]
-                        elif(c == n+1 or c == n - 2):
-                            multD2 *= matriz[n][c] 
-                        elif(c == n+2 or c == n - 1):
-                            multD3 *= matriz[n][c]
-
-                        if(c + n == 2):
-                            multE1 *= matriz[n][c]
-                        elif(c + n ==  0 or c + n == 3):
-                            multE2 *= matriz[n][c]
-                        elif(c + n == 1 or c + n == 4):
-                            multE3 *= matriz[n][c]
-
-                    resultDiagPrincipal = multD1 + multD2 + multD3
-                    resultDiagSecundaria = (multE1 + multE2 + multE3) *-1
-                    determinante = resultDiagPrincipal + resultDiagSecundaria    
-                subDeterminante += determinante
-                placeholder -= 1
-                while(placeholder >= 0):
-                    for j in range(placeholder):
-                        for i in range(placeholder):
-                            if(i == placeholder):
-                                elemento = (-1 ** (j+i)) * determinante
-                                cofator += elemento
-                    determinante = cofator
-                    cofator = 0
-                    placeholder -= 1
         print('A determinante é: ', determinante) 
 
-
-def questao2():
-    print('Voce selecionou a questao 2')
-
 selecao = 0
-selecao = int(input("Selecione a questao:\n 1 - Questao 1 \n 2 - Questao 2\n"))
+selecao = int(input("Selecione a questao:\n 1 - Questao 1 \n"))
 
 if(selecao == 1):
     questao1()
-elif(selecao == 2):
-    questao2()
