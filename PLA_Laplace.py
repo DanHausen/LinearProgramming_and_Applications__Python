@@ -1,13 +1,14 @@
 # Dan Hausen
-def questao1():
+import math
+def questao1(matriz):
     print('Questao 1... selecionada')  
 
     determinante = 0
     diagonalPrincipal = 1
     diagonalSecundaria = 1
-    x = 0
-    row = 0
-    col = 0
+    # x = 0
+    # row = 0
+    # col = 0
 
     matriz = []
     subList = []
@@ -44,29 +45,30 @@ def questao1():
                             diagonalSecundaria *= matriz[n][c]
                 determinante = diagonalPrincipal - diagonalSecundaria
 
-            elif(linhas >= 3):                
-                while x < linhas:
-                    if(matriz[0][x] != 0):
-                        matrix = []
-                        i_aux = 0
-                        j_aux = 0
-                        while row < linhas:
-                            while col < linhas:
-                                if(col != x):
-                                    matrix.append(matriz[row][col])
-                                    j_aux += 1
-                                col += 1
-                            i_aux += 1
-                            j_aux = 0
-                            row += 1       
-                        factor = (x % 2 == 0) if matriz[0][x] else -matriz[0][x]
-                        determinante = determinante + factor * (linhas - 1)
-                    x += 1
+            elif(linhas >= 3):         
+                determinante = 0
+                for i in range(linhas):
+                    newMatrix = matriz[1:,:]
+                    for n in range(linhas):
+                        newMatrix = newMatrix.remove[n][i]
+                    determinante = determinante + math.pow(-1, 1+i+1) * matriz[0,i] * (questao1(newMatrix))
+                return determinante
 
+                # while x < linhas:
+                #     if(matriz[0][x] != 0):
+                #         matrix = []
+                #         i_aux = 0
+                #         j_aux = 0
+                #         while row < linhas:
+                #             while col < linhas:
+                #                 if(col != x):
+                #                     matrix.append(matriz[row][col])
+                #                     j_aux += 1
+                #                 col += 1
+                #             i_aux += 1
+                #             j_aux = 0
+                #             row += 1       
+                #         factor = (x % 2 == 0) if matriz[0][x] else -matriz[0][x]
+                #         determinante = determinante + factor * (linhas - 1)
+                #     x += 1
         print('A determinante é: ', determinante) 
-
-selecao = 0
-selecao = int(input("Selecione a questao:\n 1 - Questao 1 \n"))
-
-if(selecao == 1):
-    questao1()
